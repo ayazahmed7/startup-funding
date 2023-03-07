@@ -13,8 +13,18 @@ const Signup = () => {
       />
       {/* Jumbotron */}
       <div className="container py-4">
-        <div className="row g-0 align-items-center">
-          <div className="col-lg-6 mb-5 mb-lg-0">
+        <div className="row g-0">
+        <div className="col-lg-8 mb-5 mb-lg-0">
+          <div className='login-card-img w-100'>
+
+          </div>
+            {/* <img
+              src=""
+              className="w-100 rounded-4 shadow-4"
+              alt=""
+            /> */}
+          </div>
+          <div className="col-lg-4 mb-5 mb-lg-0">
             <div
               className="card cascading-right"
               style={{
@@ -126,13 +136,7 @@ const Signup = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 mb-5 mb-lg-0">
-            <img
-              src="https://fullscale.io/wp-content/uploads/2022/04/find-investors-for-startup.png"
-              className="w-100 rounded-4 shadow-4"
-              alt=""
-            />
-          </div>
+          
         </div>
       </div>
       {/* Jumbotron */}

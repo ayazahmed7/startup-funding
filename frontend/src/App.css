@@ -9,3 +9,10 @@
   border: 1px solid black;
   height: 80vh;
 }
+
+.login-card-img{
+  background-image: url('https://fullscale.io/wp-content/uploads/2022/04/find-investors-for-startup.png');
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}

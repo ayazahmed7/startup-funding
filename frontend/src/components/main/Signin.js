@@ -27,9 +27,7 @@ const Signin = () => {
                 <div className="card-body py-5 px-md-5"> 
                   <form>
                     {/* 2 column grid layout with text inputs for the first and last names */}
-                    <div className="row">
-                      <div className="col-md-6 mb-4">
-                        <div className="form-outline">
+                    <div className="form-outline">
                         
                           <input
                             type="text"
@@ -38,7 +36,7 @@ const Signin = () => {
                           
                           />
                           
-                          <h3 className="mb-5">Sign in</h3>
+                          <h3 className="mb-5 text-center">Sign in</h3>
                           <div className="form-outline mb-4">
                             <input
                               type="email"
@@ -153,8 +151,6 @@ const Signin = () => {
                             </button>
                           </div>
                         </div>
-                      </div>
-                    </div>
                   </form>
                 </div>
               </div>
