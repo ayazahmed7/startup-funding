@@ -14,6 +14,7 @@ import AdminAuth from "./auth/AdminAuth";
 import UserProvider from "./context/UserProvider";
 import AdminProvider from "./context/AdminProvider";
 import { useState } from "react";
+import About from "./components/main/About";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -45,6 +46,7 @@ function App() {
               <Route element={<Home />} path="home" />
               <Route element={<Signin />} path="signin" />
               <Route element={<Signup />} path="signup" />
+              <Route element={<About />} path="about" />
             </Route>
 
             <Route
