@@ -21,7 +21,7 @@ const Header = () => {
         {/* Collapsible wrapper */}
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {/* Navbar brand */}
-          <h2 style={{ color: "white" }}>Startup Funding </h2>
+          <h2 style={{ color: "white", fontFamily: "Montserrat" }}>Startup Funding </h2>
           {/* Left links */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
@@ -30,13 +30,18 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/main/about">
+              <NavLink className="nav-link" to="/main/about">       
                 AboutUs
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/main/contact">
                 Contact
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/main/StartupListing">
+                Startup Listing
               </NavLink>
             </li>
           </ul>

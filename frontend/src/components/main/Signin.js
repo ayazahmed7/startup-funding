@@ -1,13 +1,27 @@
-import React from 'react'
+import React from 'react';
+import {useFormik} from 'formik';
 
 const Signin = () => {
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+
+    },
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
+  
   return (
     <div><>
     {/* Section: Design Block */}
     <section className="">
       {/* Jumbotron */}
       <div
-        className="px-4 py-5 px-md-5 text-center text-lg-start"
+        className="px-4 py-3 px-md-3 text-center text-lg-start"
         style={{ backgroundColor: "hsl(0, 0%, 96%)" }}
       >
         <div className="container">
@@ -53,9 +67,7 @@ const Signin = () => {
                               id="typePasswordX-2"
                               className="form-control form-control-lg"
                             />
-                            <label
-                              className="form-label"
-                              htmlFor="typePasswordX-2"
+                            <label className="form-label" htmlFor="typePasswordX-2"
                             >
                               Password
                             </label>

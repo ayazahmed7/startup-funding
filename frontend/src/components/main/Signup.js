@@ -1,6 +1,63 @@
-import React from 'react'
+import React from 'react';
+import {useFormik} from 'formik';
+import app_config from '../../config';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
+
+  const url = app_config.apiurl;
+
+
+  const addStartup = async (id) => {
+    const response = await fetch(url+'/startup/add', {
+      method: 'POST',
+      body : JSON.stringify({owner : id}),
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    });
+
+    // reading response status
+    console.log(response.status);
+
+    
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+      created_at: new Date()
+    },
+    onSubmit: async (values, {setSubmitting, resetForm}) => {
+      const response = await fetch(url+'/user/add', {
+        method: 'POST',
+        body : JSON.stringify(values),
+        headers: {
+          'Content-Type' : 'application/json'
+        }
+      });
+
+      // reading response status
+      console.log(response.status);
+
+      if(response.status === 201){
+        const data = (await response.json()).result;
+        addStartup(data._id);
+        Swal.fire({
+          icon : 'success',
+          title : 'Registered',
+          text : 'User registered successfully'
+        })
+
+      }
+
+      setSubmitting(false)
+      resetForm()
+    },
+  });
+
   return (
     <div><>
     {/* Section: Design Block */}
@@ -32,41 +89,33 @@ const Signup = () => {
                 backdropFilter: "blur(30px)"
               }}
             >
-              <div className="card-body p-5 shadow-5 text-center">
-                <h2 className="fw-bold mb-5">Sign up now</h2>
-                <form>
+              <div className="card-body p-5 shadow-5">
+                <h2 className="fw-bold mb-5 text-center">Sign up now</h2>
+                <form onSubmit={formik.handleSubmit}>
                   {/* 2 column grid layout with text inputs for the first and last names */}
                   <div className="row">
                     <div className="col-md-6 mb-4">
-                      <div className="form-outline">
+                      <label className="form-label" htmlFor="form3Example1">
+                          Full Name
+                        </label>
                         <input
                           type="text"
-                          id="form3Example1"
+                          id="name"
+                          value={formik.values.name}
+                          onChange={formik.handleChange}
                           className="form-control"
                         />
-                        <label className="form-label" htmlFor="form3Example1">
-                          First name
-                        </label>
-                      </div>
+                        
                     </div>
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <input
-                          type="text"
-                          id="form3Example2"
-                          className="form-control"
-                        />
-                        <label className="form-label" htmlFor="form3Example2">
-                          Last name
-                        </label>
-                      </div>
-                    </div>
+                    
                   </div>
                   {/* Email input */}
                   <div className="form-outline mb-4">
                     <input
                       type="email"
-                      id="form3Example3"
+                      id="email"
+                      value={formik.values.email}
+                      onChange={formik.handleChange}
                       className="form-control"
                     />
                     <label className="form-label" htmlFor="form3Example3">
@@ -77,7 +126,9 @@ const Signup = () => {
                   <div className="form-outline mb-4">
                     <input
                       type="password"
-                      id="form3Example4"
+                      id="password"
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
                       className="form-control"
                     />
                     <label className="form-label" htmlFor="form3Example4">

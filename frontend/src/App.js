@@ -6,8 +6,6 @@ import Signin from "./components/main/Signin";
 import Signup from "./components/main/Signup";
 import Home from "./components/main/Home";
 import UserAuth from "./auth/UserAuth";
-import User from "./components/user";
-import UserProfile from "./components/user/UserProfile";
 import AdminProfile from "./components/admin/AdminProfile";
 import NotFound from "./components/NotFound";
 import AdminAuth from "./auth/AdminAuth";
@@ -15,6 +13,11 @@ import UserProvider from "./context/UserProvider";
 import AdminProvider from "./context/AdminProvider";
 import { useState } from "react";
 import About from "./components/main/About";
+import Startup from "./components/startup";
+import Manageprofile from "./components/startup/manageProfile";
+import StartupListing from "./components/main/StartupListing";
+
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -47,17 +50,19 @@ function App() {
               <Route element={<Signin />} path="signin" />
               <Route element={<Signup />} path="signup" />
               <Route element={<About />} path="about" />
+              <Route element={<About />} path="listing" />
+              <Route element={<StartupListing />} path="StartupListing" />
             </Route>
 
             <Route
               element={
                 // <UserAuth>
                 // </UserAuth>
-                <User />
+                <Startup />
               }
-              path="user"
+              path="startup"
             >
-              <Route path="profile" element={<UserProfile />} />
+              <Route path="profile" element={<Manageprofile />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
